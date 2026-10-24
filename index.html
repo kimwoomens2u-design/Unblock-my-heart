@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <title>Cayra's iPhone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="stage">
+    <section class="iphone" id="iphone" aria-label="iPhone Cayra">
+
+      <!-- Dynamic Island -->
+      <div class="dynamic-island">
+        <span class="island-camera"></span>
+      </div>
+
+      <!-- ================= LOCK SCREEN ================= -->
+      <section class="lockscreen" id="lockscreen">
+        <div class="lock-wallpaper"></div>
+
+        <header class="status-bar lock-status-bar">
+          <span id="lock-status-time">09:41</span>
+          <div class="status-icons">
+            <span>●●●</span>
+            <span>◖</span>
+            <span class="battery">▰</span>
+          </div>
+        </header>
+
+        <div class="lock-content">
+          <p class="lock-date" id="date">Jumat, 24 Oktober</p>
+          <h1 class="lock-clock" id="time">09:41</h1>
+        </div>
+
+        <button class="lock-notification" id="lock-notification"
+          type="button" aria-label="Buka notifikasi">
+          <span class="notification-app-icon">●</span>
+          <span class="notification-copy">
+            <strong>WhatsApp</strong>
+            <span>mnyt🐵</span>
+            <small>woy, buka HP lo.</small>
+          </span>
+          <span class="notification-time">sekarang</span>
+        </button>
+
+        <div class="lock-bottom">
+          <button type="button" class="lock-shortcut" id="lock-camera"
+            aria-label="Kamera">▣</button>
+
+          <button type="button" class="unlock-button" id="unlock-button"
+            aria-label="Buka kunci iPhone">
+            <span class="unlock-chevron">⌃</span>
+            <span>Ketuk untuk membuka</span>
+          </button>
+
+          <button type="button" class="lock-shortcut" id="lock-flashlight"
+            aria-label="Senter">ϟ</button>
+        </div>
+
+        <!-- Keypad passcode -->
+        <section class="passcode-screen hidden" id="passcode-screen"
+          aria-label="Masukkan kode sandi">
+          <div class="passcode-heading">
+            <p>Masukkan Kode Sandi</p>
+            <span>iPhone Cayra</span>
+          </div>
+
+          <div class="passcode-dots" id="passcode-dots"
+            aria-label="Empat digit kode sandi">
+            <span class="passcode-dot"></span>
+            <span class="passcode-dot"></span>
+            <span class="passcode-dot"></span>
+            <span class="passcode-dot"></span>
+          </div>
+
+          <p class="passcode-error" id="passcode-error"
+            role="status" aria-live="polite"></p>
+
+          <!-- Input kompatibilitas; keypad visual digunakan untuk mengetik -->
+          <input
+            type="password"
+            id="passcode"
+            inputmode="numeric"
+            maxlength="4"
+            autocomplete="off"
+            aria-label="Kode sandi"
+            class="passcode-input"
+          >
+
+          <div class="numeric-keypad" id="numeric-keypad">
+            <button type="button" data-passcode-digit="1">1</button>
+            <button type="button" data-passcode-digit="2">2<small>ABC</small></button>
+            <button type="button" data-passcode-digit="3">3<small>DEF</small></button>
+            <button type="button" data-passcode-digit="4">4<small>GHI</small></button>
+            <button type="button" data-passcode-digit="5">5<small>JKL</small></button>
+            <button type="button" data-passcode-digit="6">6<small>MNO</small></button>
+            <button type="button" data-passcode-digit="7">7<small>PQRS</small></button>
+            <button type="button" data-passcode-digit="8">8<small>TUV</small></button>
+            <button type="button" data-passcode-digit="9">9<small>WXYZ</small></button>
+            <span class="keypad-empty"></span>
+            <button type="button" data-passcode-digit="0">0</button>
+            <button type="button" id="passcode-delete"
+              class="passcode-delete" aria-label="Hapus angka terakhir">⌫</button>
+          </div>
+
+          <div class="passcode-footer">
+            <button type="button" id="passcode-cancel">Batal</button>
+            <button type="button" id="passcode-submit">Darurat</button>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= HOME SCREEN ================= -->
+      <section class="homescreen hidden" id="homescreen">
+        <div class="home-wallpaper"></div>
+
+        <header class="status-bar home-status-bar">
+          <span id="home-time">09:41</span>
+          <div class="status-icons">
+            <span>●●●</span>
+            <span>◖</span>
+            <span class="battery">▰</span>
+          </div>
+        </header>
+
+        <div class="home-greeting">
+          <p>Friday, October 24</p>
+          <h1>Cayra's iPhone</h1>
+        </div>
+
+        <section class="apps-grid" id="apps-grid"
+          aria-label="Aplikasi">
+          <!-- Ikon aplikasi dibuat oleh script.js -->
+        </section>
+
+        <section class="home-widget">
+          <div class="widget-top">
+            <span class="widget-symbol">☀</span>
+            <span>Cuaca</span>
+          </div>
+          <strong>Jakarta</strong>
+          <p>Cerah, cocok buat kabur dari masalah.</p>
+        </section>
+
+        <nav class="dock" aria-label="Aplikasi favorit">
+          <button type="button" class="dock-app phone" onclick="openApp('phone')"
+            aria-label="Phone">☎</button>
+          <button type="button" class="dock-app safari" onclick="openApp('safari')"
+            aria-label="Safari">🧭</button>
+          <button type="button" class="dock-app messages" onclick="openApp('messages')"
+            aria-label="Messages">●</button>
+          <button type="button" class="dock-app music" onclick="openApp('music')"
+            aria-label="Music">♫</button>
+        </nav>
+      </section>
+
+      <!-- ================= WHATSAPP ================= -->
+      <section class="app-screen hidden" id="whatsapp">
+        <header class="app-header whatsapp-header">
+          <div class="app-status-row">
+            <span id="wa-time">09:41</span>
+            <span>●●● ◖ ▰</span>
+          </div>
+          <div class="app-header-main">
+            <h2>WhatsApp</h2>
+            <button type="button" aria-label="Pesan baru">＋</button>
+          </div>
+        </header>
+
+        <div class="app-scroll whatsapp-scroll" id="whatsapp-scroll">
+          <div class="app-search">
+            <span>⌕</span>
+            <span>Cari</span>
+          </div>
+
+          <div class="chat-list" id="whatsapp-list"></div>
+        </div>
+
+        <nav class="app-tab-bar">
+          <button type="button" class="active">◉<small>Chat</small></button>
+          <button type="button">◌<small>Pembaruan</small></button>
+          <button type="button">◎<small>Komunitas</small></button>
+          <button type="button">☎<small>Panggilan</small></button>
+          <button type="button" onclick="openApp('settings')">⚙<small>Setelan</small></button>
+        </nav>
+      </section>
+
+      <!-- ================= INSTAGRAM ================= -->
+      <section class="app-screen hidden" id="instagram">
+        <header class="app-header instagram-header">
+          <div class="app-status-row">
+            <span id="ig-time">09:41</span>
+            <span>●●● ◖ ▰</span>
+          </div>
+          <div class="app-header-main">
+            <h2>Instagram</h2>
+            <button type="button" aria-label="Pesan">➤</button>
+          </div>
+        </header>
+
+        <div class="app-scroll instagram-scroll">
+          <div class="instagram-stories">
+            <div class="story">
+              <div class="story-avatar">C</div>
+              <small>Cerita Anda</small>
+            </div>
+            <div class="story">
+              <div class="story-avatar">S</div>
+              <small>Stezi</small>
+            </div>
+            <div class="story">
+              <div class="story-avatar">Y</div>
+              <small>Yebi</small>
+            </div>
+            <div class="story">
+              <div class="story-avatar">J</div>
+              <small>mnyt🐵</small>
+            </div>
+          </div>
+
+          <div class="instagram-post">
+            <div class="instagram-post-header">
+              <div class="avatar">C</div>
+              <div>
+                <strong>cayraofficial</strong>
+                <small>Jakarta, Indonesia</small>
+              </div>
+              <button type="button" aria-label="Opsi postingan">•••</button>
+            </div>
+            <div class="instagram-post-image">
+              <span>Foto Cayra</span>
+            </div>
+            <div class="instagram-post-actions">
+              <button type="button" aria-label="Suka">♡</button>
+              <button type="button" aria-label="Komentar">○</button>
+              <button type="button" aria-label="Bagikan">➤</button>
+              <button type="button" aria-label="Simpan">♧</button>
+            </div>
+            <div class="instagram-post-caption">
+              <strong>cayraofficial</strong>
+              hari ini cantik dulu, masalah belakangan.
+            </div>
+          </div>
+
+          <h3 class="section-heading">Pesan</h3>
+          <div class="chat-list" id="instagram-list"></div>
+        </div>
+
+        <nav class="app-tab-bar instagram-tabs">
+          <button type="button">⌂<small>Beranda</small></button>
+          <button type="button">⌕<small>Jelajahi</small></button>
+          <button type="button">＋<small>Buat</small></button>
+          <button type="button">♡<small>Aktivitas</small></button>
+          <button type="button">C<small>Profil</small></button>
+        </nav>
+      </section>
+
+      <!-- ================= CHAT DETAIL ================= -->
+      <section class="app-screen hidden" id="chat-detail">
+        <header class="chat-detail-header">
+          <button type="button" onclick="backToList()" aria-label="Kembali">‹</button>
+          <div class="avatar" id="chat-avatar">C</div>
+          <div class="chat-detail-title">
+            <strong id="chat-name">Kontak</strong>
+            <small id="chat-subtitle">online</small>
+          </div>
+          <button type="button" aria-label="Panggilan">☎</button>
+          <button type="button" aria-label="Informasi">ⓘ</button>
+        </header>
+
+        <div class="chat-scroll" id="chat-scroll">
+          <div class="chat-context" id="chat-context">Hari ini</div>
+          <div class="chat-messages" id="chat-messages"></div>
+        </div>
+
+        <form class="message-form" id="message-form">
+          <button type="button" aria-label="Tambah lampiran">＋</button>
+          <input id="message-input" type="text"
+            placeholder="Ketik pesan..." autocomplete="off">
+          <button type="submit" aria-label="Kirim pesan">➤</button>
+        </form>
+      </section>
+
+      <!-- ================= PHOTOS ================= -->
+      <section class="app-screen hidden" id="photos">
+        <header class="app-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Foto</h2>
+        </header>
+        <div class="app-scroll photos-scroll">
+          <h3>Perpustakaan</h3>
+          <p class="muted">Kenangan Cayra</p>
+          <div class="photo-grid" id="photo-grid">
+            <div class="photo-placeholder">Cayra</div>
+            <div class="photo-placeholder">Jiwoo</div>
+            <div class="photo-placeholder">Yuha</div>
+            <div class="photo-placeholder">Stella</div>
+            <div class="photo-placeholder">Prem</div>
+            <div class="photo-placeholder">Memories</div>
+          </div>
+          <h3>Album</h3>
+          <div class="album-row"><span>▧</span><span>Favorit</span></div>
+          <div class="album-row"><span>▧</span><span>AU Memories</span></div>
+        </div>
+      </section>
+
+      <!-- ================= CAMERA ================= -->
+      <section class="app-screen hidden camera-screen" id="camera">
+        <div class="camera-view">
+          <div class="camera-top">
+            <span class="live-time">09:41</span>
+            <span>●●● ◖ ▰</span>
+          </div>
+          <div class="camera-message">Kamera</div>
+          <div class="camera-controls">
+            <button type="button" aria-label="Foto terakhir">▧</button>
+            <button type="button" class="shutter-button" aria-label="Ambil foto"></button>
+            <button type="button" aria-label="Ganti kamera">↻</button>
+          </div>
+          <p class="camera-mode">SINEMATIK &nbsp; VIDEO &nbsp; <strong>FOTO</strong> &nbsp; POTRET</p>
+        </div>
+      </section>
+
+      <!-- ================= X ================= -->
+      <section class="app-screen hidden" id="twitter">
+        <header class="app-header x-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>𝕏</h2>
+        </header>
+
+        <div class="x-account-switch">
+          <button type="button" data-x-account="private">🔒 Priv</button>
+          <button type="button" data-x-account="public">Publik</button>
+        </div>
+        <p id="x-account-info" class="x-account-info">Akun Cayra</p>
+
+        <div class="app-scroll x-scroll">
+          <div id="x-feed" class="x-feed"></div>
+        </div>
+
+        <button type="button" class="x-compose-button" id="x-compose-button"
+          aria-label="Buat cuitan">＋</button>
+
+        <form id="x-compose-form" class="x-compose-form hidden">
+          <textarea id="x-compose-text" placeholder="Apa yang terjadi?!"
+            maxlength="280"></textarea>
+          <div>
+            <button type="button" id="x-compose-cancel">Batal</button>
+            <button type="submit">Posting</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ================= NOTES ================= -->
+      <section class="app-screen hidden" id="notes">
+        <header class="app-header notes-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Catatan</h2>
+          <p>Semua iCloud</p>
+        </header>
+        <div class="app-scroll notes-scroll">
+          <div class="app-search">⌕ &nbsp; Cari Catatan</div>
+          <div id="notes-content"></div>
+        </div>
+      </section>
+
+      <!-- ================= MUSIC ================= -->
+      <section class="app-screen hidden" id="music">
+        <header class="app-header music-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Musik</h2>
+        </header>
+
+        <div class="app-scroll music-scroll">
+          <div class="music-now-playing">
+            <div class="music-art" id="now-playing-art">♫</div>
+            <p>Sedang Diputar</p>
+            <h3 id="now-playing-title">The Chase</h3>
+            <p id="now-playing-artist">Hearts2Hearts</p>
+
+            <div class="music-progress">
+              <span id="music-current-time">00:00</span>
+              <input id="music-seek" type="range" min="0" max="100" value="0">
+              <span id="music-duration">--:--</span>
+            </div>
+
+            <div class="music-controls">
+              <button type="button" id="music-prev" aria-label="Sebelumnya">◀◀</button>
+              <button type="button" id="music-main-play" aria-label="Putar">▶</button>
+              <button type="button" id="music-next" aria-label="Berikutnya">▶▶</button>
+            </div>
+            <button type="button" id="music-play-toggle" class="music-secondary-play">
+              Putar lagu
+            </button>
+          </div>
+
+          <h3>Playlist Cayra</h3>
+          <div class="playlist-tabs">
+            <button type="button" data-playlist="h2h" class="active">Hearts2Hearts</button>
+            <button type="button" data-playlist="babymonster">BABYMONSTER</button>
+            <button type="button" data-playlist="dangdut">Dangdut</button>
+            <button type="button" data-playlist="indo">Indonesia</button>
+          </div>
+          <div id="music-track-list"></div>
+          <audio id="music-audio" preload="none"></audio>
+        </div>
+      </section>
+
+      <!-- ================= ROBLOX ================= -->
+      <section class="app-screen hidden" id="roblox">
+        <header class="app-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Roblox</h2>
+        </header>
+        <div class="app-scroll roblox-scroll">
+          <div class="roblox-profile">
+            <div class="roblox-avatar">C</div>
+            <h3>Cayra</h3>
+            <p>@cayraofficial</p>
+          </div>
+          <h3>Continue</h3>
+          <div class="roblox-game"><span>🎮</span><strong>Brookhaven 🏡RP</strong></div>
+          <div class="roblox-game"><span>🌈</span><strong>Dress To Impress</strong></div>
+          <div class="roblox-game"><span>🏙️</span><strong>Adopt Me!</strong></div>
+        </div>
+      </section>
+
+      <!-- ================= MAIL ================= -->
+      <section class="app-screen hidden" id="mail">
+        <header class="app-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Mail</h2>
+          <p>Semua Kotak Masuk</p>
+        </header>
+        <div class="app-scroll mail-scroll">
+          <div class="app-search">⌕ &nbsp; Cari</div>
+          <article class="mail-item">
+            <strong>Stezi</strong><small>09.12</small>
+            <p>Jangan lupa jadwal syuting besok.</p>
+          </article>
+          <article class="mail-item">
+            <strong>Manajemen</strong><small>Kemarin</small>
+            <p>Jadwal kegiatan dan pekerjaan minggu ini.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= SETTINGS ================= -->
+      <section class="app-screen hidden" id="settings">
+        <header class="app-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Pengaturan</h2>
+        </header>
+        <div class="app-scroll settings-scroll">
+          <div class="settings-profile">
+            <img src="assets/carmen.jpg" alt="Foto profil Cayra"
+              onerror="this.style.display='none'">
+            <div><strong>Cayra</strong><p>Apple Account</p></div>
+            <span>›</span>
+          </div>
+          <div class="settings-group">
+            <div class="settings-row"><span>✈</span><strong>Mode Pesawat</strong><span>○</span></div>
+            <div class="settings-row"><span>◉</span><strong>Wi-Fi</strong><span>Terhubung ›</span></div>
+            <div class="settings-row"><span>ᛒ</span><strong>Bluetooth</strong><span>Aktif ›</span></div>
+            <div class="settings-row"><span>▰</span><strong>Baterai</strong><span>›</span></div>
+          </div>
+          <div class="settings-group">
+            <div class="settings-row"><span>◉</span><strong>Umum</strong><span>›</span></div>
+            <div class="settings-row"><span>☼</span><strong>Tampilan & Kecerahan</strong><span>›</span></div>
+            <div class="settings-row"><span>♡</span><strong>Privasi & Keamanan</strong><span>›</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PHONE ================= -->
+      <section class="app-screen hidden" id="phone">
+        <header class="app-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Telepon</h2>
+        </header>
+        <div class="app-scroll phone-scroll">
+          <div class="app-search">⌕ &nbsp; Cari</div>
+          <h3>Terbaru</h3>
+          <div class="phone-contact"><span class="avatar">S</span><div><strong>Stezi</strong><small>Telepon keluar</small></div><span>☎</span></div>
+          <div class="phone-contact"><span class="avatar">J</span><div><strong>mnyt🐵</strong><small>Panggilan tak terjawab</small></div><span>☎</span></div>
+        </div>
+        <nav class="app-tab-bar">
+          <button>★<small>Favorit</small></button>
+          <button class="active">◷<small>Terbaru</small></button>
+          <button>☻<small>Kontak</small></button>
+          <button>▦<small>Keypad</small></button>
+          <button>◉<small>Pesan Suara</small></button>
+        </nav>
+      </section>
+
+      <!-- ================= SAFARI ================= -->
+      <section class="app-screen hidden" id="safari">
+        <header class="app-header safari-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Safari</h2>
+        </header>
+        <div class="app-scroll safari-scroll">
+          <div class="safari-search">
+            <span>⌕</span>
+            <input type="url" placeholder="Cari atau masukkan situs web">
+          </div>
+          <div class="safari-favorites">
+            <h3>Favorit</h3>
+            <div class="safari-favorite-grid">
+              <button type="button">◎<small>Instagram</small></button>
+              <button type="button">𝕏<small>X</small></button>
+              <button type="button">▶<small>YouTube</small></button>
+              <button type="button">W<small>Wikipedia</small></button>
+            </div>
+          </div>
+          <div class="safari-start-page">
+            <h3>Privasi adalah hal penting.</h3>
+            <p>Halaman awal Safari Cayra.</p>
+          </div>
+        </div>
+        <nav class="safari-toolbar">
+          <button type="button" aria-label="Kembali">‹</button>
+          <button type="button" aria-label="Maju">›</button>
+          <button type="button" aria-label="Bagikan">↑</button>
+          <button type="button" aria-label="Tab">▢</button>
+        </nav>
+      </section>
+
+      <!-- ================= MESSAGES ================= -->
+      <section class="app-screen hidden" id="messages">
+        <header class="app-header messages-header">
+          <div class="app-status-row">
+            <span class="live-time">09:41</span><span>●●● ◖ ▰</span>
+          </div>
+          <h2>Pesan</h2>
+        </header>
+        <div class="app-scroll messages-scroll">
+          <div class="app-search">⌕ &nbsp; Cari</div>
+          <div class="message-preview">
+            <div class="avatar">S</div>
+            <div><strong>Stezi</strong><p>Cay, besok jangan telat lagi.</p></div>
+            <small>09.12</small>
+          </div>
+          <div class="message-preview">
+            <div class="avatar">Y</div>
+            <div><strong>Yebi</strong><p>jadi nonton bareng nggak?</p></div>
+            <small>Kemarin</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Home indicator -->
+      <button type="button" class="home-indicator"
+        aria-label="Kembali ke layar utama"></button>
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
