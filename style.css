@@ -1,0 +1,2245 @@
+
+/* ==========================================
+   CAYRA'S IPHONE — MODERN iOS STYLE
+   style.css
+========================================== */
+
+:root {
+  --system-bg: #f5f5f7;
+  --system-text: #1c1c1e;
+  --system-secondary: #8e8e93;
+  --system-blue: #0a84ff;
+  --system-green: #30d158;
+  --system-border: rgba(60, 60, 67, 0.15);
+  --glass: rgba(255, 255, 255, 0.72);
+  --phone-width: 390px;
+  --phone-height: 844px;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Segoe UI", sans-serif;
+  color: var(--system-text);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 20% 15%, #42344f 0, transparent 38%),
+    radial-gradient(ellipse at 80% 85%, #28394c 0, transparent 38%),
+    #111116;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--system-blue);
+  outline-offset: 3px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.muted {
+  color: var(--system-secondary);
+}
+
+/* ==========================================
+   PHONE FRAME
+========================================== */
+
+.stage {
+  min-height: 100vh;
+  padding: 28px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iphone {
+  position: relative;
+  isolation: isolate;
+  width: min(var(--phone-width), 94vw);
+  height: min(var(--phone-height), calc(100dvh - 36px));
+  min-height: 590px;
+  overflow: hidden;
+  border: 7px solid #29292d;
+  border-radius: 54px;
+  background: #080808;
+  box-shadow:
+    0 0 0 1px #77777c,
+    0 0 0 3px #171719,
+    0 35px 90px rgba(0, 0, 0, 0.65),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.iphone::before {
+  content: "";
+  position: absolute;
+  z-index: 30;
+  inset: 0;
+  border-radius: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+.iphone::after {
+  content: "";
+  position: absolute;
+  z-index: 29;
+  top: 110px;
+  bottom: 110px;
+  left: -7px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(#777, #292929, #777);
+  pointer-events: none;
+}
+
+.dynamic-island {
+  position: absolute;
+  z-index: 80;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 112px;
+  height: 32px;
+  border-radius: 22px;
+  background: #020202;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+    0 1px 2px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.island-camera {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #293c51, #080a10 70%);
+  box-shadow: inset 0 0 0 1px #151c2b;
+}
+
+.home-indicator {
+  position: absolute;
+  z-index: 90;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 134px;
+  height: 5px;
+  border-radius: 10px;
+  background: #fff;
+  opacity: 0.95;
+}
+
+/* ==========================================
+   STATUS BAR
+========================================== */
+
+.status-bar {
+  position: absolute;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 47px;
+  padding: 13px 25px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: white;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.1px;
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.battery {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 10px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-size: 8px;
+  line-height: 1;
+}
+
+/* ==========================================
+   LOCK SCREEN
+========================================== */
+
+.lockscreen,
+.homescreen,
+.app-screen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.lockscreen {
+  z-index: 10;
+  color: #fff;
+  background: #303047;
+}
+
+.lock-wallpaper,
+.home-wallpaper {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.lock-wallpaper {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17, 15, 35, 0.14) 0%,
+      rgba(20, 16, 36, 0.03) 38%,
+      rgba(11, 11, 23, 0.4) 100%
+    ),
+    radial-gradient(ellipse at 22% 25%, #c7a7c4 0, transparent 31%),
+    radial-gradient(ellipse at 76% 35%, #8d91b7 0, transparent 32%),
+    radial-gradient(ellipse at 42% 66%, #9a789c 0, transparent 37%),
+    linear-gradient(150deg, #3d3458 0%, #83789d 42%, #27283e 100%);
+}
+
+.lock-content {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.lock-date {
+  margin: 0 0 3px;
+  font-size: 16px;
+  font-weight: 500;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lock-clock {
+  margin: 0;
+  font-size: clamp(66px, 19vw, 82px);
+  font-weight: 300;
+  letter-spacing: -4px;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
+}
+
+.lock-notification {
+  position: absolute;
+  top: 330px;
+  left: 13px;
+  right: 13px;
+  min-height: 83px;
+  padding: 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 21px;
+  background: rgba(239, 238, 246, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  backdrop-filter: blur(25px) saturate(140%);
+  -webkit-backdrop-filter: blur(25px) saturate(140%);
+}
+
+.notification-app-icon {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #29c86a;
+  font-size: 18px;
+}
+
+.notification-copy {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.notification-copy strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.notification-copy span {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.notification-copy small {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.notification-time {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.lock-bottom {
+  position: absolute;
+  bottom: 28px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lock-shortcut {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 50%;
+  background: rgba(20, 20, 28, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+}
+
+.unlock-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px;
+  color: rgba(255, 255, 255, 0.95);
+  background: transparent;
+  font-size: 11px;
+  text-shadow: 0 1px 5px #333;
+}
+
+.unlock-chevron {
+  font-size: 22px;
+  line-height: 1;
+  animation: unlockHint 1.8s ease-in-out infinite;
+}
+
+@keyframes unlockHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* ==========================================
+   PASSCODE PANEL
+========================================== */
+
+.passcode-screen {
+  position: absolute;
+  z-index: 60;
+  inset: 0;
+  padding: 65px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(20, 19, 32, 0.38);
+  backdrop-filter: blur(36px) saturate(120%);
+  -webkit-backdrop-filter: blur(36px) saturate(120%);
+}
+
+.passcode-heading {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.passcode-heading p {
+  margin: 0 0 7px;
+  font-size: 20px;
+  font-weight: 650;
+}
+
+.passcode-heading span {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+}
+
+.passcode-dots {
+  margin: 27px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 17px;
+}
+
+.passcode-dot {
+  width: 11px;
+  height: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.passcode-dot.filled {
+  background: #fff;
+}
+
+.passcode-error {
+  min-height: 18px;
+  margin: 11px 0 2px;
+  color: #ffb5b5;
+  text-align: center;
+  font-size: 11px;
+}
+
+.passcode-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.numeric-keypad {
+  width: min(100%, 275px);
+  margin: 4px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 12px 14px;
+}
+
+.numeric-keypad > button {
+  width: 67px;
+  height: 67px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.17);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 28px;
+  font-weight: 400;
+  transition: background 0.12s, transform 0.12s;
+}
+
+.numeric-keypad > button:active {
+  transform: scale(0.93);
+  background: rgba(255, 255, 255, 0.36);
+}
+
+.numeric-keypad > button small {
+  margin-top: 1px;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.numeric-keypad .keypad-empty {
+  width: 67px;
+  height: 67px;
+}
+
+.numeric-keypad .passcode-delete {
+  font-size: 22px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.passcode-footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 0 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.passcode-footer button {
+  padding: 8px;
+  color: white;
+  background: transparent;
+  font-size: 13px;
+}
+
+/* ==========================================
+   HOME SCREEN
+========================================== */
+
+.homescreen {
+  z-index: 5;
+  color: white;
+  background: #655b81;
+}
+
+.home-wallpaper {
+  background:
+    linear-gradient(180deg, rgba(14, 14, 28, 0.18), rgba(14, 14, 28, 0.15)),
+    radial-gradient(ellipse at 20% 17%, #e0c1d6 0, transparent 31%),
+    radial-gradient(ellipse at 80% 30%, #8d9ebd 0, transparent 34%),
+    radial-gradient(ellipse at 45% 78%, #c6a5be 0, transparent 37%),
+    linear-gradient(145deg, #665575, #b09cb8 48%, #3e435e);
+}
+
+.home-greeting {
+  position: absolute;
+  top: 78px;
+  left: 22px;
+  right: 22px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
+}
+
+.home-greeting p {
+  margin: 0 0 5px;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.home-greeting h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.5px;
+}
+
+.apps-grid {
+  position: absolute;
+  top: 145px;
+  left: 15px;
+  right: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-items: center;
+  align-items: start;
+  gap: 21px 8px;
+}
+
+.app-tile {
+  min-width: 0;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  background: transparent;
+}
+
+.app-icon {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    0 4px 9px rgba(0, 0, 0, 0.17);
+  transition: transform 0.12s;
+}
+
+.app-tile:active .app-icon {
+  transform: scale(0.9);
+}
+
+.app-label {
+  max-width: 78px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+.app-icon.whatsapp { background: linear-gradient(145deg, #40e17a, #13a957); }
+.app-icon.instagram { background: linear-gradient(35deg, #ffb83f, #ed286e 48%, #9148e8 82%); }
+.app-icon.photos { background: #f7f7f8; color: #f05b76; }
+.app-icon.camera { background: linear-gradient(145deg, #595a60, #292a2e); }
+.app-icon.twitter { background: #050505; }
+.app-icon.notes { background: linear-gradient(#fff5aa 0 27%, #fff 27%); color: #333; }
+.app-icon.music { background: linear-gradient(145deg, #ff758e, #e72755); }
+.app-icon.roblox { background: #111; }
+.app-icon.mail { background: linear-gradient(145deg, #7cc9ff, #2879e5); }
+.app-icon.settings { background: linear-gradient(145deg, #c9c9cf, #73737e); }
+.app-icon.phone { background: linear-gradient(145deg, #49e47b, #19ae56); }
+.app-icon.safari { background: linear-gradient(145deg, #65d8ff, #1376d8); }
+.app-icon.messages { background: linear-gradient(145deg, #60ed8b, #20b957); }
+
+.home-widget {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 112px;
+  min-height: 98px;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 21px;
+  background: rgba(255, 255, 255, 0.17);
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.07);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.widget-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+.widget-symbol {
+  font-size: 16px;
+}
+
+.home-widget strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.home-widget p {
+  margin: 3px 0 0;
+  font-size: 10px;
+}
+
+.dock {
+  position: absolute;
+  left: 13px;
+  right: 13px;
+  bottom: 24px;
+  min-height: 78px;
+  padding: 11px 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 27px;
+  background: rgba(255, 255, 255, 0.19);
+  backdrop-filter: blur(25px) saturate(140%);
+  -webkit-backdrop-filter: blur(25px) saturate(140%);
+}
+
+.dock-app {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  color: white;
+  font-size: 27px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.dock-app.phone { background: linear-gradient(145deg, #49e47b, #18a84d); }
+.dock-app.safari { background: linear-gradient(145deg, #7de4ff, #1474db); }
+.dock-app.messages { background: linear-gradient(145deg, #62ed8e, #1bb454); }
+.dock-app.music { background: linear-gradient(145deg, #ff7892, #e32955); }
+
+/* ==========================================
+   SHARED APP SCREEN
+========================================== */
+
+.app-screen {
+  z-index: 15;
+  padding-bottom: 24px;
+  color: var(--system-text);
+  background: var(--system-bg);
+}
+
+.app-header {
+  position: relative;
+  z-index: 2;
+  padding: 50px 20px 14px;
+  background: rgba(248, 248, 250, 0.96);
+  border-bottom: 1px solid rgba(60, 60, 67, 0.06);
+}
+
+.app-header h2 {
+  margin: 9px 0 0;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
+.app-header p {
+  margin: 4px 0 0;
+  color: var(--system-secondary);
+  font-size: 12px;
+}
+
+.app-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.app-header-main {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header-main h2 {
+  margin: 0;
+}
+
+.app-header-main button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--system-blue);
+  font-size: 23px;
+}
+
+.app-scroll {
+  position: absolute;
+  top: 125px;
+  left: 0;
+  right: 0;
+  bottom: 55px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.app-scroll::-webkit-scrollbar,
+.chat-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.app-search {
+  margin: 10px 14px;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #85858b;
+  background: #e7e7eb;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.app-tab-bar {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 55px;
+  padding: 5px 4px 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(250, 250, 252, 0.96);
+  border-top: 1px solid rgba(60, 60, 67, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.app-tab-bar button {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: #85858b;
+  background: transparent;
+  font-size: 19px;
+}
+
+.app-tab-bar button.active {
+  color: var(--system-green);
+}
+
+.app-tab-bar button small {
+  font-size: 9px;
+}
+
+/* ==========================================
+   WHATSAPP
+========================================== */
+
+.whatsapp-header {
+  padding-top: 48px;
+  background: #f8f8f8;
+}
+
+.whatsapp-header h2 {
+  color: #101010;
+}
+
+.whatsapp-header .app-header-main button {
+  color: #168d53;
+}
+
+.whatsapp-scroll {
+  top: 140px;
+  bottom: 55px;
+  background: #fff;
+}
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-list-item {
+  width: 100%;
+  min-height: 74px;
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-align: left;
+  background: transparent;
+  border-bottom: 1px solid rgba(60, 60, 67, 0.08);
+}
+
+.chat-list-item:active {
+  background: #ececee;
+}
+
+.avatar {
+  position: relative;
+  flex: 0 0 45px;
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d5a5c5, #8179aa);
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.avatar img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar > span {
+  position: relative;
+  z-index: 0;
+}
+
+.chat-list-copy {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.chat-list-copy strong {
+  overflow: hidden;
+  color: #171717;
+  font-size: 14px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-list-copy small,
+.wa-preview {
+  overflow: hidden;
+  color: #85858b;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-list-meta {
+  align-self: flex-start;
+  padding-top: 5px;
+  color: #85858b;
+  font-size: 10px;
+}
+
+.wa-contact-info {
+  gap: 4px;
+}
+
+.wa-contact-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.wa-contact-top .wa-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wa-contact-top .wa-time {
+  flex-shrink: 0;
+  font-size: 10px;
+}
+
+.wa-preview {
+  display: block;
+  max-width: 100%;
+}
+
+/* ==========================================
+   INSTAGRAM
+========================================== */
+
+.instagram-header {
+  background: #fff;
+}
+
+.instagram-header h2 {
+  font-size: 25px;
+  letter-spacing: -1px;
+}
+
+.instagram-scroll {
+  top: 126px;
+  bottom: 55px;
+  background: #fff;
+}
+
+.instagram-stories {
+  padding: 13px 10px 12px;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  border-bottom: 1px solid #eee;
+}
+
+.story {
+  flex: 0 0 57px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.story-avatar {
+  width: 53px;
+  height: 53px;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: 2px solid #e04483;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d6a3ce, #7d81bb);
+  box-shadow: inset 0 0 0 2px white;
+}
+
+.story small {
+  max-width: 58px;
+  overflow: hidden;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.instagram-post {
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.instagram-post-header {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.instagram-post-header .avatar {
+  width: 34px;
+  height: 34px;
+  flex-basis: 34px;
+}
+
+.instagram-post-header > div:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.instagram-post-header strong {
+  font-size: 11px;
+}
+
+.instagram-post-header small {
+  font-size: 9px;
+  color: #777;
+}
+
+.instagram-post-header > button {
+  background: transparent;
+  font-size: 19px;
+}
+
+.instagram-post-image {
+  width: 100%;
+  aspect-ratio: 1 / 0.92;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 13px;
+  background:
+    radial-gradient(ellipse at 35% 25%, rgba(247, 208, 218, 0.7), transparent 36%),
+    linear-gradient(145deg, #89728c, #4d4e6c 55%, #c6a3b4);
+}
+
+.instagram-post-actions {
+  padding: 6px 10px 0;
+  display: flex;
+  gap: 12px;
+}
+
+.instagram-post-actions button {
+  padding: 2px;
+  background: transparent;
+  font-size: 24px;
+}
+
+.instagram-post-actions button:last-child {
+  margin-left: auto;
+}
+
+.instagram-post-caption {
+  padding: 5px 12px 14px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.instagram-post-caption strong {
+  margin-right: 4px;
+}
+
+.section-heading {
+  margin: 17px 15px 4px;
+  font-size: 16px;
+}
+
+.instagram-tabs button.active {
+  color: #262626;
+}
+
+.instagram-chat .chat-detail-header {
+  background: #fff;
+}
+
+/* ==========================================
+   CHAT DETAIL
+========================================== */
+
+#chat-detail {
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+  background: #efe9e1;
+}
+
+#chat-detail.hidden {
+  display: none !important;
+}
+
+.chat-detail-header {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  min-height: 81px;
+  padding: 38px 10px 9px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7f7f7;
+  border-bottom: 1px solid rgba(60, 60, 67, 0.12);
+}
+
+.chat-detail-header > button {
+  flex-shrink: 0;
+  padding: 2px;
+  background: transparent;
+  color: #168b54;
+  font-size: 24px;
+}
+
+.chat-detail-header .avatar {
+  width: 34px;
+  height: 34px;
+  flex-basis: 34px;
+}
+
+.chat-detail-title {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chat-detail-title strong {
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-detail-title small {
+  color: #7b7b80;
+  font-size: 9px;
+}
+
+.chat-scroll {
+  min-height: 0;
+  flex: 1;
+  padding: 10px 10px 15px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: #efe9e1;
+  background-image: radial-gradient(rgba(130, 115, 98, 0.08) 0.7px, transparent 0.7px);
+  background-size: 13px 13px;
+  scrollbar-width: none;
+}
+
+.chat-context {
+  width: fit-content;
+  margin: 0 auto 15px;
+  padding: 5px 10px;
+  color: #68615a;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 7px;
+  font-size: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.message {
+  position: relative;
+  max-width: 83%;
+  padding: 8px 9px 5px;
+  border-radius: 12px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.message.them {
+  align-self: flex-start;
+  background: #fff;
+  border-top-left-radius: 4px;
+}
+
+.message.me {
+  align-self: flex-end;
+  background: #d8f9c4;
+  border-top-right-radius: 4px;
+}
+
+.message-text {
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.message-time {
+  margin-top: 4px;
+  color: #858585;
+  text-align: right;
+  font-size: 9px;
+}
+
+.sticker-message .message-text {
+  padding: 8px 2px;
+  font-size: 14px;
+}
+
+.message-form {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  min-height: 49px;
+  padding: 7px 9px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #f7f7f7;
+  border-top: 1px solid rgba(60, 60, 67, 0.08);
+}
+
+.message-form button {
+  flex-shrink: 0;
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  color: #168b54;
+  background: transparent;
+  font-size: 22px;
+}
+
+.message-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #dedede;
+  border-radius: 21px;
+  background: white;
+  outline: none;
+  font-size: 12px;
+}
+
+/* ==========================================
+   PHOTOS
+========================================== */
+
+.photos-scroll,
+.notes-scroll,
+.roblox-scroll,
+.mail-scroll,
+.settings-scroll,
+.phone-scroll,
+.safari-scroll,
+.messages-scroll {
+  padding-bottom: 18px;
+}
+
+.photos-scroll h3,
+.music-scroll > h3,
+.roblox-scroll > h3 {
+  margin: 16px 15px 5px;
+  font-size: 17px;
+}
+
+.photos-scroll > p {
+  margin: 4px 15px 12px;
+  font-size: 11px;
+}
+
+.photo-grid {
+  padding: 5px 9px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.photo-placeholder {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  background: linear-gradient(145deg, #d6b6d0, #777b9c);
+}
+
+.photo-placeholder:nth-child(3n + 2) {
+  background: linear-gradient(145deg, #aab7d2, #6a6e8c);
+}
+
+.photo-placeholder:nth-child(3n) {
+  background: linear-gradient(145deg, #d8c5b5, #8b7187);
+}
+
+.album-row {
+  margin: 0 14px;
+  padding: 13px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--system-border);
+  font-size: 12px;
+}
+
+/* ==========================================
+   CAMERA
+========================================== */
+
+.camera-screen {
+  color: #fff;
+  background: #050505;
+}
+
+.camera-view {
+  position: absolute;
+  inset: 0;
+  padding: 45px 15px 28px;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 50% 45%, #39363f 0, #18181c 45%, #050505 78%);
+}
+
+.camera-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.camera-message {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 14px;
+}
+
+.camera-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.camera-controls button {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  font-size: 19px;
+}
+
+.camera-controls .shutter-button {
+  width: 65px;
+  height: 65px;
+  border: 5px solid white;
+  background: #fff;
+  box-shadow: inset 0 0 0 2px #999;
+}
+
+.camera-mode {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #bbb;
+}
+
+.camera-mode strong {
+  color: #f2d15c;
+}
+
+/* ==========================================
+   X / TWITTER
+========================================== */
+
+.x-header {
+  padding-bottom: 10px;
+}
+
+.x-header h2 {
+  font-size: 26px;
+}
+
+.x-account-switch {
+  position: absolute;
+  z-index: 3;
+  top: 113px;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fafafa;
+  border-bottom: 1px solid var(--system-border);
+}
+
+.x-account-switch button {
+  padding: 11px 5px;
+  color: #6f6f74;
+  background: transparent;
+  font-size: 12px;
+}
+
+.x-account-switch button.active {
+  color: #161616;
+  font-weight: 700;
+  box-shadow: inset 0 -3px #1d9bf0;
+}
+
+.x-account-info {
+  position: absolute;
+  z-index: 2;
+  top: 156px;
+  left: 12px;
+  right: 12px;
+  margin: 0;
+  overflow: hidden;
+  color: #777;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.x-scroll {
+  top: 181px;
+  bottom: 30px;
+  background: #fff;
+}
+
+.x-post {
+  padding: 13px 12px;
+  display: flex;
+  gap: 9px;
+  border-bottom: 1px solid #ececec;
+}
+
+.x-post-avatar {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #d9b2cc, #797ea7);
+  font-weight: 700;
+}
+
+.x-post-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.x-post-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.x-post-head strong {
+  font-size: 11px;
+}
+
+.x-post-head span {
+  color: #777;
+}
+
+.x-post-body p {
+  margin: 5px 0 11px;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.x-post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  color: #777;
+  font-size: 10px;
+}
+
+.x-delete-post {
+  padding: 2px 4px;
+  color: #777;
+  background: transparent;
+}
+
+.x-compose-button {
+  position: absolute;
+  z-index: 8;
+  right: 17px;
+  bottom: 49px;
+  width: 49px;
+  height: 49px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 50%;
+  background: #1d9bf0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 28px;
+}
+
+.x-compose-form {
+  position: absolute;
+  z-index: 12;
+  inset: auto 9px 42px;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+.x-compose-form textarea {
+  width: 100%;
+  min-height: 95px;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.x-compose-form > div {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.x-compose-form button {
+  padding: 8px 12px;
+  border-radius: 18px;
+  background: #efefef;
+  font-size: 11px;
+}
+
+.x-compose-form button[type="submit"] {
+  color: #fff;
+  background: #1d9bf0;
+}
+
+/* ==========================================
+   NOTES
+========================================== */
+
+.notes-header h2 {
+  margin-top: 12px;
+}
+
+.note-item {
+  margin: 9px 13px;
+  padding: 13px 14px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.note-item h3 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.note-item small {
+  color: #a0a0a5;
+  font-size: 10px;
+}
+
+.note-item p {
+  margin: 9px 0 0;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+/* ==========================================
+   MUSIC
+========================================== */
+
+.music-header {
+  background: linear-gradient(180deg, #f9f0f3, #f5f5f7);
+}
+
+.music-scroll {
+  top: 125px;
+  bottom: 28px;
+  padding: 0 13px 20px;
+}
+
+.music-now-playing {
+  margin-top: 13px;
+  padding: 16px 14px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #fff5f7, #e9d8e6);
+  box-shadow: 0 5px 18px rgba(94, 54, 87, 0.07);
+}
+
+.music-art {
+  width: min(100%, 210px);
+  aspect-ratio: 1;
+  margin: 0 auto 15px;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 15px;
+  background:
+    radial-gradient(circle at 70% 25%, #f4c8df, transparent 32%),
+    linear-gradient(145deg, #d5a0c3, #79729b 58%, #3e435f);
+  box-shadow: 0 8px 20px rgba(63, 40, 74, 0.2);
+  font-size: 70px;
+}
+
+.music-now-playing > p {
+  margin: 5px 0;
+  color: #817184;
+  font-size: 10px;
+}
+
+.music-now-playing h3 {
+  margin: 4px 0;
+  font-size: 18px;
+}
+
+.music-progress {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #777;
+  font-size: 9px;
+}
+
+.music-progress input {
+  min-width: 0;
+  flex: 1;
+  accent-color: #a64d82;
+}
+
+.music-controls {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.music-controls button {
+  padding: 8px;
+  color: #51404f;
+  background: transparent;
+  font-size: 18px;
+}
+
+.music-controls #music-main-play {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #51404f;
+  font-size: 17px;
+}
+
+.music-secondary-play {
+  margin-top: 7px;
+  padding: 8px 16px;
+  color: #fff;
+  border-radius: 18px;
+  background: #a64d82;
+  font-size: 11px;
+}
+
+.playlist-tabs {
+  padding: 3px 0 10px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+}
+
+.playlist-tabs button {
+  flex-shrink: 0;
+  padding: 8px 11px;
+  color: #555;
+  background: #e8e8ec;
+  border-radius: 18px;
+  font-size: 10px;
+}
+
+.playlist-tabs button.active {
+  color: #fff;
+  background: #a64d82;
+}
+
+.music-track {
+  width: 100%;
+  min-height: 57px;
+  padding: 8px 4px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-align: left;
+  background: transparent;
+  border-bottom: 1px solid var(--system-border);
+}
+
+.music-track-number {
+  width: 22px;
+  color: #888;
+  text-align: center;
+  font-size: 11px;
+}
+
+.music-track-copy {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.music-track-copy strong {
+  font-size: 12px;
+}
+
+.music-track-copy small {
+  color: #777;
+  font-size: 10px;
+}
+
+.music-track-action {
+  color: #a64d82;
+  font-size: 15px;
+}
+
+/* ==========================================
+   ROBLOX
+========================================== */
+
+.roblox-header h2 {
+  font-size: 26px;
+}
+
+.roblox-scroll {
+  top: 125px;
+  padding: 12px 13px;
+  background: #f7f7f8;
+}
+
+.roblox-profile {
+  padding: 17px;
+  text-align: center;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.roblox-avatar {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 8px;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #d6a3ce, #737ba5);
+  font-size: 26px;
+}
+
+.roblox-profile h3 {
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+.roblox-profile p {
+  margin: 3px 0;
+  color: #777;
+  font-size: 11px;
+}
+
+.roblox-game {
+  margin: 8px 0;
+  min-height: 65px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.roblox-game > span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #e8e5ef;
+  font-size: 23px;
+}
+
+.roblox-game strong {
+  font-size: 11px;
+}
+
+/* ==========================================
+   MAIL
+========================================== */
+
+.mail-item {
+  position: relative;
+  margin: 0 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--system-border);
+}
+
+.mail-item strong {
+  font-size: 12px;
+}
+
+.mail-item small {
+  float: right;
+  color: #999;
+  font-size: 10px;
+}
+
+.mail-item p {
+  margin: 6px 0 0;
+  color: #777;
+  font-size: 11px;
+}
+
+/* ==========================================
+   SETTINGS
+========================================== */
+
+.settings-scroll {
+  top: 125px;
+  padding: 12px 12px 20px;
+  background: #f2f2f7;
+}
+
+.settings-profile {
+  min-height: 80px;
+  margin-bottom: 18px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.settings-profile img {
+  width: 49px;
+  height: 49px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #e4d5e5;
+}
+
+.settings-profile > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.settings-profile strong {
+  font-size: 14px;
+}
+
+.settings-profile p {
+  margin: 4px 0 0;
+  color: #777;
+  font-size: 10px;
+}
+
+.settings-profile > span {
+  color: #aaa;
+  font-size: 22px;
+}
+
+.settings-group {
+  margin-bottom: 18px;
+  padding: 0 12px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.settings-row {
+  min-height: 47px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(60, 60, 67, 0.1);
+  font-size: 11px;
+}
+
+.settings-row:last-child {
+  border-bottom: 0;
+}
+
+.settings-row > span:first-child {
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 6px;
+  background: #8585a0;
+  font-size: 15px;
+}
+
+.settings-row strong {
+  min-width: 0;
+  flex: 1;
+  font-weight: 500;
+}
+
+.settings-row > span:last-child {
+  color: #999;
+}
+
+/* ==========================================
+   PHONE APP
+========================================== */
+
+.phone-contact {
+  margin: 0 14px;
+  min-height: 67px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--system-border);
+}
+
+.phone-contact > div {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.phone-contact strong {
+  font-size: 12px;
+}
+
+.phone-contact small {
+  color: #777;
+  font-size: 10px;
+}
+
+.phone-contact > span:last-child {
+  color: var(--system-green);
+  font-size: 20px;
+}
+
+.phone-scroll h3 {
+  margin: 16px;
+  font-size: 13px;
+}
+
+/* ==========================================
+   SAFARI
+========================================== */
+
+.safari-header {
+  background: #f4f4f6;
+}
+
+.safari-search {
+  margin: 15px 13px;
+  min-height: 42px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dedee4;
+  border-radius: 13px;
+  background: #fff;
+  color: #777;
+}
+
+.safari-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 11px;
+}
+
+.safari-favorites h3,
+.safari-start-page h3 {
+  margin: 18px 15px 10px;
+  font-size: 14px;
+}
+
+.safari-favorite-grid {
+  padding: 0 13px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+
+.safari-favorite-grid button {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  font-size: 24px;
+}
+
+.safari-favorite-grid button::first-letter {
+  color: #168bff;
+}
+
+.safari-favorite-grid small {
+  font-size: 9px;
+}
+
+.safari-start-page {
+  margin: 25px 13px;
+  padding: 15px 5px;
+  border-top: 1px solid #ddd;
+}
+
+.safari-start-page p {
+  margin: 0 15px;
+  color: #777;
+  font-size: 11px;
+}
+
+.safari-toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 48px;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid var(--system-border);
+  background: rgba(250, 250, 252, 0.96);
+}
+
+.safari-toolbar button {
+  padding: 5px 13px;
+  color: #168bff;
+  background: transparent;
+  font-size: 24px;
+}
+
+/* ==========================================
+   MESSAGES
+========================================== */
+
+.message-preview {
+  margin-left: 14px;
+  min-height: 72px;
+  padding: 9px 13px 9px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--system-border);
+}
+
+.message-preview > div:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+}
+
+.message-preview strong {
+  font-size: 12px;
+}
+
+.message-preview p {
+  margin: 5px 0 0;
+  overflow: hidden;
+  color: #777;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message-preview > small {
+  align-self: flex-start;
+  padding-top: 6px;
+  color: #999;
+  font-size: 9px;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-height: 760px) {
+  .stage {
+    padding: 10px;
+  }
+
+  .iphone {
+    height: calc(100dvh - 20px);
+    min-height: 0;
+    border-radius: 45px;
+  }
+
+  .iphone::before {
+    border-radius: 38px;
+  }
+
+  .lock-content {
+    top: 86px;
+  }
+
+  .lock-clock {
+    font-size: 67px;
+  }
+
+  .lock-notification {
+    top: 265px;
+  }
+
+  .lock-bottom {
+    bottom: 18px;
+  }
+
+  .passcode-screen {
+    padding-top: 52px;
+  }
+
+  .passcode-heading p {
+    font-size: 18px;
+  }
+
+  .passcode-dots {
+    margin-top: 18px;
+  }
+
+  .numeric-keypad {
+    gap: 8px 12px;
+  }
+
+  .numeric-keypad > button,
+  .numeric-keypad .keypad-empty {
+    width: 57px;
+    height: 57px;
+  }
+
+  .apps-grid {
+    top: 126px;
+    row-gap: 15px;
+  }
+
+  .app-icon {
+    width: 49px;
+    height: 49px;
+    border-radius: 13px;
+    font-size: 27px;
+  }
+
+  .home-widget {
+    bottom: 105px;
+    min-height: 85px;
+  }
+
+  .dock {
+    bottom: 18px;
+    min-height: 67px;
+  }
+
+  .dock-app {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 430px) {
+  .stage {
+    padding: 0;
+    min-height: 100dvh;
+  }
+
+  .iphone {
+    width: 100vw;
+    height: 100dvh;
+    min-height: 0;
+    border-width: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .iphone::before,
+  .iphone::after {
+    display: none;
+  }
+
+  .dynamic-island {
+    top: 11px;
+  }
+
+  .home-indicator {
+    bottom: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
